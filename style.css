@@ -1,0 +1,20 @@
+.gameboard {
+  display: flex;
+  flex-direction: column;
+  width: 50vw;
+  height: 65vh;
+  border: 3px solid black;
+  margin: auto;
+}
+
+.row {
+  display: flex;
+  flex-basis: 50%;
+}
+
+.cell {
+  flex: 1;
+  border: 1px solid black;
+}
+
+.buttonid 
