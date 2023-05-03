@@ -17,6 +17,26 @@
   border: 1px solid black;
 }
 
-.buttonid {
-    
+.buttonsset1 {
+  display: flex;
+  border-radius: 50%;
+  margin: auto;
+  justify-content: center;
+  padding: 15px 29px;
+  width: 100%;
+  height: 100%;
+}
+
+.buttonsset2 {
+  display: flex;
+  border-radius: 50%;
+  margin: auto;
+  justify-content: center;
+  padding: 15px 29px;
+  width: 100%;
+  height: 100%;
+}
+
+.Dest1 {
+  margin-right: 50%;
 }
