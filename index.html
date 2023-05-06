@@ -1,49 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css" />
-    <title>Around the World Tic Tac Toe</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css" />
+  <title>Around the World Tic Tac Toe</title>
 </head>
+
 <body>
-    <h1><a href=https://imgur.com/SuALbGC><img src="https://imgur.com/SuALbGC.jpg" width="82" height="86" title="Around the World Tic Tac Toe" alt="Around the World Tic Tac Toe"></a> Around the World Tic Tac Toe</h1>
+  <h1><a href=https://imgur.com/SuALbGC><img src="https://imgur.com/SuALbGC.jpg" width="82" height="86"
+        title="Around the World Tic Tac Toe" alt="Around the World Tic Tac Toe"></a> Around the World Tic Tac Toe</h1>
 
-<div class="gameboard">
- <div class="row">
- <div class="cell"></div>
- <div class="cell"></div>
- <div class="cell"></div>
- </div>
+  <div class="cell" data-row="0" data-cell='0'></div>
+  <div class="gameboard" id="gameboard">
+    <div class="row">
+      <div class="cell" data row="0" data-cell="0"></div>
+      <div class="cell" data row="0" data-cell="1"></div>
+      <div class="cell" data row="0" data-cell="2"></div>
+    </div>
 
- <div class="row">
- <div class="cell"></div>
- <div class="cell"></div>
- <div class="cell"></div>
- </div>
+    <div class="row">
+      <div class="cell" data row="1" data-cell="0"></div>
+      <div class="cell" data row="1" data-cell="1"></div>
+      <div class="cell" data row="1" data-cell="2"></div>
+    </div>
 
-<div class="row">
-<div class="cell"></div>
-<div class="cell"></div>
-<div class="cell"></div>
+    <div class="row">
+      <div class="cell" data row="2" data-cell="0"></div>
+      <div class="cell" data row="2" data-cell="1"></div>
+      <div class="cell" data row="2" data-cell="2"></div>
+    </div>
   </div>
-</div>
 
- <div class="buttonsset1">
-<button id="Player1">Player 1 ✈️</button>
-<button id="Player2">Player 2 ✈️</button>
- </div>
+  <div class="buttonsset1">
+    <button id="player1">Player 1 ✈️</button>
+    <button id="player2">Player 2 ✈️</button>
+  </div>
 
- <div class="buttonsset2"> 
-<button id="Dest1">Paris📍</button>
-<button id="Dest2">Barcelona📍</button>
-<button id="Dest3">London 📍</button>
-<button id="Dest4">Tokyo 📍</button>
-<button id="Dest5">Beijing 📍</button>
-<button id="Dest6">Mexico City 📍</button>
- </div>
+  <div class="buttonsset2">
+    <button id="Dest1">Paris📍</button>
+    <button id="Dest2">Barcelona📍</button>
+    <button id="Dest3">London 📍</button>
+    <button id="Dest4">Tokyo 📍</button>
+    <button id="Dest5">Beijing 📍</button>
+    <button id="Dest6">Mexico City 📍</button>
+  </div>
 
- <script src="script.js" defer></script>
+  <script src="script.js" defer></script>
 </body>
+
 </html>

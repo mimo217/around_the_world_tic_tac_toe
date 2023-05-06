@@ -1,6 +1,7 @@
 body {
   text-align: center;
   font-family: "Comic Sans MS"; sans-serif;
+  font-size: 25px;
 }
 
 .gameboard {
@@ -48,6 +49,6 @@ button {
   gap: 10px;
   justify-content: center;
   padding: 15px 29px;
-  width: 25vw;
-  height: 20vh;
+  width: 10vw;
+  height: 10vh;
 }
