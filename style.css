@@ -1,16 +1,13 @@
-h1 {
+body {
   text-align: center;
-  font-style: Virgil;
-
-
-
+  font-family: "Comic Sans MS"; sans-serif;
 }
 
 .gameboard {
   display: flex;
   flex-direction: column;
   width: 50vw;
-  height: 65vh;
+  height: 60vh;
   border: 3px solid black;
   margin: auto;
 }
@@ -29,6 +26,9 @@ button {
   padding: 35px 50px;
   font-size: 2.5em;
   border-radius: 50%;
+  background-color: transparent;
+  font-family: "Comic Sans MS"; sans-serif;
+  font-size: 30px;
 }
 
 .buttonsset1 {
@@ -45,8 +45,9 @@ button {
   display: flex;
   border-radius: 50%;
   margin: auto;
+  gap: 10px;
   justify-content: center;
   padding: 15px 29px;
-  width: 100%;
-  height: 100%;
+  width: 25vw;
+  height: 20vh;
 }
