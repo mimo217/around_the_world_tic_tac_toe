@@ -2,100 +2,141 @@
 const roundLimit = 5;
 const player1 = 'O';
 const player2 = 'X';
-const player1Btn = document.getElementById('player1');
-const player2Btn = document.getElementById('player2');
 
 /* ---- state variables ----*/
-const gameBoard = [
-  ["", "", ""],
-  ["", "", ""],
-  ["", "", ""]
+let gameBoard = [
+  ['', '', ''],
+  ['', '', ''],
+  ['', '', '']
 ];
 let currentPlayer = player1;
-//}
+let gameIsOngoing = true;
+
+function resetGameBoard() {
+  //reset the game board
+  gameBoard = [
+    ['', '', ''],
+    ['', '', ''],
+    ['', '', '']
+  ];
+  currentPlayer = player1;
+  gameIsOngoing = true;
+  renderGameBoard();
+}
 
 /*--- event listeners ----*/
-document.getElementById('gameboard').addEventListener('click', handleMove);
-
-player1Btn.addEventListener('click', function () {
+// document.getElementById('gameboard').addEventListener('click', handleMove);
+document.getElementById('player1').addEventListener('click', function () {
   currentPlayer = player1;
-  player1Btn.innerText = player1;
-  player2Btn.innerText = player2;
+  document.querySelector('.current-player').innerText = 'O';
 });
-
-player2Btn.addEventListener('click', function () {
+document.getElementById('player2').addEventListener('click', function () {
   currentPlayer = player2;
-  player2Btn.innerText = player2;
-  player1Btn.innerText = player1;
+  document.querySelector('.current-player').innerText = 'X';
+});
+document.getElementById('dest1').addEventListener('click', function () {
+  resetGameBoard('Paris');
+});
+document.getElementById('dest2').addEventListener('click', function () {
+  resetGameBoard('Barcelona');
+});
+document.getElementById('dest3').addEventListener('click', function () {
+  resetGameBoard('London');
+});
+document.getElementById('dest4').addEventListener('click', function () {
+  resetGameBoard('Tokyo');
+});
+document.getElementById('dest5').addEventListener('click', function () {
+  resetGameBoard('Beijing');
 });
 
-/* ---- function ---- */
-function renderGameBoard() {
-  let cells = document.querySelectorAll('.cell');
+
+// /* ---- function ---- */
+function removeClickEvent() {
+  const cells = [...document.querySelectorAll('.cell')];
+
   cells.forEach((cell) => {
-    const row = cell.dataset.row;
-    const column = cell.dataset.cell;
-    cell.innerText = gameBoard[row][column];
+    cell.removeEventListener('click', displayCell);
+    console.log(cell)
   });
 }
 
-function handleMove(event) {
-  let cell = event.target.dataset.cell;
-  let row = event.target.dataset.row;
-  if (gameBoard[row][cell] !== "") {
-    showInfo('this box is taken!');
-    return;
-  }
+function displayCell(row, col, cell) {
+  console.log(row, col, gameBoard[row][col])
 
-gameBoard[row][cell] = currentPlayer;
-event.target.innerText = currentPlayer;
+  if (gameBoard[row][col] === '') {
+    cell.innerText = currentPlayer;
+    gameBoard[row][col] = currentPlayer;
+    // cell.classList.add(currentPlayer);
 
-  if (checkWinner()) {
-    showInfo(`${currentPlayer} wins!`);
-  } else if (gameIsTied()) {
-    showInfo("It's a draw!")
-  } else {
-    currentPlayer = currentPlayer === player1 ? player2 : player1;
+
+    const winner = checkWin();
+    //check for a winner
+    if (winner !== null) {
+      gameIsOngoing = false;
+      console.log(`${currentPlayer} wins!`);
+      removeClickEvent();
+    // check for a tie
+    } else if (checkDraw()) {
+      gameIsOngoing = false;
+      console.log('The game is a draw!');
+      removeClickEvent();
+    } else {
+      //change player
+      currentPlayer = (currentPlayer == 'O') ? 'X' : 'O';
+    }
   }
 }
 
-function showInfo(message) {
-  let info = document.getElementById('info');
-  info.innerText = message;
+//Render the game board
+function renderGameBoard() {
+  const cells = [...document.querySelectorAll('.cell')];
+
+  cells.forEach((cell) => {
+    const row = cell.dataset.row;
+    const col = cell.dataset.column;
+    cell.addEventListener('click', () => displayCell(row, col, cell));
+  });
 }
 
-//check winning combinations
-function checkWinner() {
-  //check horizontal
-  for (let i = 0; i < 3; i++) {
-    if (gameBoard[i][0] === currentPlayer && gameBoard[i][1] === currentPlayer && gameBoard[i][2] === currentPlayer) {
-      return true;
+function checkWin() {
+  //check horizontals
+  for (let row = 0; row < gameBoard.length; row++) {
+    if (gameBoard[row][0] === gameBoard[row][1] && gameBoard[row][1] === gameBoard[row][2] && gameBoard[row][0] !== '') {
+      return gameBoard[row][0];
     }
   }
 
-  //check vertical
-  for (let i = 0; i < 3; i++) {
-    if (gameBoard[0][i] === currentPlayer && gameBoard[1][i] === currentPlayer && gameBoard[2][i] === currentPlayer) {
-      return true;
+  //check verticals
+  for (let col = 0; col < gameBoard.length; col++) {
+    if (gameBoard[0][col] === gameBoard[1][col] && gameBoard[1][col] === gameBoard[2][col] && gameBoard[0][col] !== '') {
+      return gameBoard[0][col];
     }
   }
+
   //check diagonals
-  if (gameBoard[0][0] === currentPlayer && gameBoard[1][1] === currentPlayer && gameBoard[2][2] === currentPlayer) {
-    return true;
-  }
-
-  if (gameBoard[0][2] === currentPlayer && gameBoard[1][1] === currentPlayer && gameBoard[2][0] === currentPlayer) {
-    return true;
+  for (let cell = 0; cell < gameBoard.length; cell++) {
+    if (gameBoard[0][0] === gameBoard[1][1] && gameBoard[1][1] === gameBoard[2][2] && gameBoard[0][0] !== '') {
+      return gameBoard[0][0];
+    }
+    if (gameBoard[0][2] === gameBoard[1][1] && gameBoard[1][1] === gameBoard[2][0] && gameBoard[0][2] !== '') {
+      return gameBoard[0][2];
+    }
+    return null;
   }
 }
 
-function gameIsTied() {
-    for (let row = 0; row < gameBoard.length; row++) {
-      for (let cell = 0; cell < gameBoard[row].length; cell++) {
-        if (gameBoard[row][cell] === '') {
-          return false;
-        }
+function checkDraw() {
+  //check if all cells are populated
+  for (let row = 0; row < gameBoard.length; row++) {
+    for (let col = 0; col < gameBoard.length; col++) {
+      if (gameBoard[row][col] === '') {
+        return false;
       }
     }
-    return true;
   }
+
+  return true;
+}
+
+renderGameBoard();
