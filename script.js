@@ -1,7 +1,17 @@
 /* ---- constants ----*/
 const roundLimit = 5;
 const player1 = 'O';
-const player2 = 'X';
+const player2 = 'X'
+
+//Define icons per destination(game round)
+const destinations = {
+  'Paris':{ player1:'https://i.imgur.com/JwWuqqM.jpg',player2:'https://i.imgur.com/8aunzUM.jpg'},
+  'Barcelona':{ player1:'',player2:''},
+  'London':{ player1:'',player2:''},
+  'Tokyo':{ player1:'https://i.imgur.com/kFLe06Q.jpg',player2:''},
+  'Beijing':{ player1:'',player2:''},
+}
+
 
 /* ---- state variables ----*/
 let gameBoard = [
@@ -12,20 +22,30 @@ let gameBoard = [
 let currentPlayer = player1;
 let gameIsOngoing = true;
 
-function resetGameBoard() {
+function resetGameBoard(destination) {
   //reset the game board
   gameBoard = [
     ['', '', ''],
     ['', '', ''],
     ['', '', '']
   ];
+
+  //remove Xs and Os from gameboard
+  const cells = document.querySelectorAll('.cell');
+  cells.forEach(cell => {
+    cell.innerText = ""
+  });
+
+  //reset the other state variables
   currentPlayer = player1;
   gameIsOngoing = true;
   renderGameBoard();
+
+  // //set cell status
+  // updateCellStatus();
 }
 
 /*--- event listeners ----*/
-// document.getElementById('gameboard').addEventListener('click', handleMove);
 document.getElementById('player1').addEventListener('click', function () {
   currentPlayer = player1;
   document.querySelector('.current-player').innerText = 'O';
@@ -65,21 +85,23 @@ function displayCell(row, col, cell) {
   console.log(row, col, gameBoard[row][col])
 
   if (gameBoard[row][col] === '') {
-    cell.innerText = currentPlayer;
+    const img = document.createElement('img');
+    img.src = currentPlayer === player1 ?  'https://i.imgur.com/JwWuqqM.jpg'  : 'https://i.imgur.com/8aunzUM.jpg'
+    cell.innerHTML = '';
+    cell.appendChild(img);
     gameBoard[row][col] = currentPlayer;
-    // cell.classList.add(currentPlayer);
-
 
     const winner = checkWin();
     //check for a winner
     if (winner !== null) {
       gameIsOngoing = false;
-      console.log(`${currentPlayer} wins!`);
+      alert(`${currentPlayer} wins!`);
       removeClickEvent();
-    // check for a tie
+
+      // check for a tie
     } else if (checkDraw()) {
       gameIsOngoing = false;
-      console.log('The game is a draw!');
+      alert('The game is a draw!');
       removeClickEvent();
     } else {
       //change player
@@ -87,6 +109,7 @@ function displayCell(row, col, cell) {
     }
   }
 }
+
 
 //Render the game board
 function renderGameBoard() {
@@ -122,7 +145,8 @@ function checkWin() {
     if (gameBoard[0][2] === gameBoard[1][1] && gameBoard[1][1] === gameBoard[2][0] && gameBoard[0][2] !== '') {
       return gameBoard[0][2];
     }
-    return null;
+
+  return null;
   }
 }
 
@@ -138,5 +162,4 @@ function checkDraw() {
 
   return true;
 }
-
 renderGameBoard();

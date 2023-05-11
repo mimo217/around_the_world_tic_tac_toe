@@ -28,12 +28,22 @@ body {
   justify-content: center;
   align-items: center;
   padding: 10px;
+  position: relative;
+}
+
+.cell img {
+position: absolute;
+top: 0;
+max-width: 100%;
+max-height: 100%;
+object-fit: contain;
 }
 
 button {
   padding: 35px 50px;
   font-size: 2.5em;
-  border-radius: 50%;
+  border: none;
+  outline: none;
   background-color: transparent;
   font-family: "Comic Sans MS";
   font-size: 30px;
@@ -41,7 +51,7 @@ button {
 
 .buttonsset1 {
   display: flex;
-  border-radius: 50%;
+  border: none;
   margin: auto;
   justify-content: center;
   padding: 15px 29px;
@@ -51,21 +61,17 @@ button {
 
 .buttonsset2 {
   display: flex;
-  border-radius: 50%;
+  border: none;
+  outline: none;
   margin: auto;
   gap: 10px;
   justify-content: center;
   padding: 15px 29px;
   width: 10vw;
   height: 10vh;
+  background-color: transparent;
 }
 
 h1 {
   margin-top: 0;
-}
-
-.player1 {
-  border-radius: 50%;
-  width: 10vw;
-  height: 10vh;
 }
