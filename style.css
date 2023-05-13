@@ -79,8 +79,8 @@ button {
   left: 50% ;
   top: 50%;
   transform: translate(-50%,-50%);
-  width: 20vw;
-  height: 20vh;
+  width: 23vw;
+  height: 23vh;
   border: 30px solid rgb(12, 187, 235);
   background-color: white;
   text-align: center;
