@@ -1,14 +1,7 @@
+/* ---- constants ----*/
 const roundLimit = 5;
 const player1 = 'O';
 const player2 = 'X';
-const dest1X = 'https://i.imgur.com/JwWuqqM.jpg';
-const dest1O = 'https://i.imgur.com/8aunzUM.jpg';
-const dest2X = 'https://i.imgur.com/ijElqHy.png';
-const dest2O = 'https://i.imgur.com/r2S5Hl4.jpg';
-const dest3X = 'https://i.imgur.com/mRmeJ1m.png';
-const dest3O = 'https://i.imgur.com/rjcSSP6.png';
-const dest4X = 'https://i.imgur.com/RIiikxh.jpg';
-const dest4O = 'https://i.imgur.com/ezki4a4.png';
 
 /* ---- state variables ----*/
 let gameBoard = [
@@ -21,6 +14,25 @@ let gameIsOngoing = true;
 let player1ImgSrc = '';
 let player2ImgSrc = '';
 
+/*--- event listeners ----*/
+document.getElementById('dest1').addEventListener('click', function () {
+  resetGameBoard('Paris');
+});
+document.getElementById('dest2').addEventListener('click', function () {
+  resetGameBoard('Lima');
+});
+document.getElementById('dest3').addEventListener('click', function () {
+  resetGameBoard('London');
+});
+document.getElementById('dest4').addEventListener('click', function () {
+  resetGameBoard('Cairo');
+});
+document.getElementById('dest5').addEventListener('click', function () {
+  resetGameBoard('Beijing');
+});
+
+
+// /* ---- function ---- */
 
 function resetGameBoard(destination) {
   //reset the game board
@@ -64,25 +76,6 @@ function resetGameBoard(destination) {
   }
 }
 
-/*--- event listeners ----*/
-document.getElementById('dest1').addEventListener('click', function () {
-  resetGameBoard('Paris');
-});
-document.getElementById('dest2').addEventListener('click', function () {
-  resetGameBoard('Lima');
-});
-document.getElementById('dest3').addEventListener('click', function () {
-  resetGameBoard('London');
-});
-document.getElementById('dest4').addEventListener('click', function () {
-  resetGameBoard('Cairo');
-});
-document.getElementById('dest5').addEventListener('click', function () {
-  resetGameBoard('Beijing');
-});
-
-
-// /* ---- function ---- */
 function removeClickEvent() {
   const cells = [...document.querySelectorAll('.cell')];
 
@@ -101,10 +94,11 @@ function showMessage(message) {
 
   popupMessage.textContent = message;
   popupBanner.style.display = 'block';
-  closeBtn.onclick = function() {
+  closeBtn.onclick = function () {
     popupBanner.style.display = 'none';
   }
 }
+
 function displayCell(row, col, cell) {
   console.log(row, col, gameBoard[row][col])
 
