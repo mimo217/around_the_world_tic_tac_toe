@@ -62,8 +62,6 @@ function resetGameBoard(destination) {
     player1ImgSrc = 'https://i.imgur.com/RIiikxh.jpg'
     player2ImgSrc = 'https://i.imgur.com/ezki4a4.png'
   }
-
-
 }
 
 /*--- event listeners ----*/
