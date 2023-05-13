@@ -3,7 +3,7 @@ const player1 = 'O';
 const player2 = 'X';
 const dest1X = 'https://i.imgur.com/JwWuqqM.jpg';
 const dest1O = 'https://i.imgur.com/8aunzUM.jpg';
-const dest2X = 'https://i.imgur.com/qyts1DG.jpg';
+const dest2X = 'https://i.imgur.com/ijElqHy.png';
 const dest2O = 'https://i.imgur.com/r2S5Hl4.jpg';
 const dest3X = 'https://i.imgur.com/mRmeJ1m.png';
 const dest3O = 'https://i.imgur.com/rjcSSP6.png';
@@ -47,7 +47,7 @@ function resetGameBoard(destination) {
     player2ImgSrc = 'https://i.imgur.com/8aunzUM.jpg'
   }
   if (destination === 'Lima') {
-    player1ImgSrc = 'https://i.imgur.com/qyts1DG.jpg'
+    player1ImgSrc = 'https://i.imgur.com/ijElqHy.png'
     player2ImgSrc = 'https://i.imgur.com/r2S5Hl4.jpg'
   }
   if (destination === 'London') {
@@ -56,7 +56,7 @@ function resetGameBoard(destination) {
   }
   if (destination === 'Cairo') {
     player1ImgSrc = 'https://i.imgur.com/JJ81PPR.jpg'
-    player2ImgSrc = 'https://i.imgur.com/rjcSSP6.png'
+    player2ImgSrc = 'https://i.imgur.com/GkUxQrE.jpg'
   }
   if (destination === 'Beijing') {
     player1ImgSrc = 'https://i.imgur.com/RIiikxh.jpg'
@@ -102,6 +102,8 @@ function removeClickEvent() {
   });
 }
 
+// display popup banner to indicate winner and draw
+
 function showMessage(message) {
   const popupBanner = document.getElementById('popup-banner');
   const popupMessage = document.getElementById('popup-message');
@@ -134,7 +136,7 @@ function displayCell(row, col, cell) {
     } else if (checkDraw()) {
       gameIsOngoing = false;
       removeClickEvent();
-      showMessage('The game is a draw!');
+      showMessage('A draw won\'t stop us. Let\'s keep exploring!');
     } else {
       //change player
       currentPlayer = (currentPlayer == 'O') ? 'X' : 'O';
@@ -197,4 +199,4 @@ function checkDraw() {
 }
 
 renderGameBoard();
-resetGameBoard();
+resetGameBoard('Paris');
