@@ -67,14 +67,6 @@ function resetGameBoard(destination) {
 }
 
 /*--- event listeners ----*/
-document.getElementById('player1').addEventListener('click', function () {
-  currentPlayer = player1;
-  document.querySelector('.current-player').innerText = 'O';
-});
-document.getElementById('player2').addEventListener('click', function () {
-  currentPlayer = player2;
-  document.querySelector('.current-player').innerText = 'X';
-});
 document.getElementById('dest1').addEventListener('click', function () {
   resetGameBoard('Paris');
 });
