@@ -88,4 +88,3 @@ There are five different rounds of the tic tac toe game, each round is based on 
 •	Embedding background music 
 •	Make it mobile friendly
 •	Randomizer to generate the different destinations instead of manually selecting each one
-
