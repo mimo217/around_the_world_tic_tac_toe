@@ -78,7 +78,7 @@ A Tic Tac Toe browser game that is "Around the World" themed with 5 different ro
 <li>Javascript</li>
 </ul>
 <h2>Getting Started:</h2>
-<a href="https://mimo217.github.io/unit_1_project/">Link</a>
+<a href="https://mimo217.github.io/around_the_world_tic_tac_toe/">Link</a>
 to the tic tac toe browser game.
 
 There are five different rounds of the tic tac toe game, each round is based on the destinations listed. Once the players have competed in one round, they can explore and check out different destinations to continue playing the game.
